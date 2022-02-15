@@ -17,19 +17,19 @@ html {
   font-size: 10px;
 }
 
-body { 
+body {
   width: 100%;
 }
 
 .todo-lists {
-  margin: 10rem auto;
+  margin: 5rem auto;
   padding: 2rem;
   box-shadow: 5px 5px 5px 5px #bfcaca;
-  width: 40%;
+  width: 35%;
 }
 
 @media screen and (max-width: 768px) {
-  .todo-lists{
+  .todo-lists {
     width: 80%;
   }
 }
@@ -72,6 +72,12 @@ body {
   align-items: center;
 }
 
+.strike-through {
+  text-decoration: line-through;
+  font-style: italic;
+  color: rgb(28, 28, 77);
+}
+
 .description {
   padding-left: 2rem;
   font-size: 1.5rem;
@@ -96,7 +102,8 @@ body {
 .btn-clear {
   width: 100%;
   font-size: 1.7rem;
-  font-weight: 400; 
+  font-weight: 400;
   border-top: 0.5px solid #bfcaca;
   padding-top: 2rem;
+  color: #555;
 }
