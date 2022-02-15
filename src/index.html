@@ -4,8 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
     <title>Todo List</title>
   </head>
-  <body>  
+  <body>
+    <div class="todo-lists">
+      <div class="todo-header">
+        <h2 class="todo-list-title">Today's To Do</h2>
+        <button class="btn btn-refresh">
+          <i class="bi bi-arrow-repeat"></i>
+        </button>
+      </div>
+
+      <input type="text" id="todo-input" placeholder="Add to your list" />
+      <div class="todo-lists-holder">
+        <!-- <div class="todo-list-row">
+          <div class="todo-left">
+            <input
+              type="checkbox"
+              id="status"
+              name="todo-status"
+              value="true"
+            />
+            <p class="description">Wash car</p>
+          </div>
+          <button class="btn three-dots">
+            <i class="bi bi-three-dots-vertical"></i>
+            <i class="bi bi-trash"></i>
+          </button>
+        </div> -->
+      </div>
+
+      <button class="btn btn-clear">Clear all completed</button>
+    </div>
   </body>
 </html>
