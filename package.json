@@ -22,6 +22,7 @@
   "homepage": "https://github.com/mengiefen/webpack-demo#readme",
   "devDependencies": {
     "css-loader": "^6.6.0",
+    "hint": "^6.1.9",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.69.0",
