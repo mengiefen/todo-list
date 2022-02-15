@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: Lato, serif;
+  font-size: 10px;
+}
+
+body {
+  width: 100%;
+}
+
+.todo-lists {
+  margin: 5rem auto;
+  padding: 2rem;
+  box-shadow: 5px 5px 5px 5px #bfcaca;
+  width: 35%;
+}
+
+@media screen and (max-width: 768px) {
+  .todo-lists {
+    width: 80%;
+  }
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 0.5px solid #bfcaca;
+}
+
+.todo-list-title {
+  font-size: 2rem;
+}
+
+.bi {
+  font-size: 2.8rem;
+  color: #555;
+}
+
+#todo-input {
+  padding: 2rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
+.todo-list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 0.5px solid #bfcaca;
+  padding: 1rem;
+}
+
+.todo-left {
+  display: flex;
+  align-items: center;
+}
+
+.strike-through {
+  text-decoration: line-through;
+  font-style: italic;
+  color: rgb(28, 28, 77);
+}
+
+.description {
+  padding-left: 2rem;
+  font-size: 1.5rem;
+}
+
+.todo-list-holder button {
+  align-self: flex-end;
+}
+
+.btn {
+  outline: none;
+  width: auto;
+  border: none;
+  background: white;
+  cursor: pointer;
+}
+
+.bi-trash {
+  display: none;
+}
+
+.btn-clear {
+  width: 100%;
+  font-size: 1.7rem;
+  font-weight: 400;
+  border-top: 0.5px solid #bfcaca;
+  padding-top: 2rem;
+  color: #555;
+}
