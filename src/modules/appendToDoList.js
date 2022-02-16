@@ -10,9 +10,11 @@ const createTodoListRow = (todoItem) => {
   todoItem.description
 }</p>
   </div>
-  <button class="btn three-dots">
-  <i class="bi bi-three-dots-vertical"></i>
-  <i class="bi bi-trash"></i>
+  <button class="btn btn-edit">
+    <i class="bi bi-three-dots-vertical"></i>
+  </button>  
+  <button class="btn btn-delete">  
+    <i class="bi bi-trash"></i>
   </button>`;
   return rowHTML;
 };

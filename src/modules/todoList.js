@@ -19,7 +19,11 @@ class TODO {
       completed: this.completed,
     });
     this.storeTodo();
-    this.renderPage();
+    appendTodoList({
+      index: this.index,
+      description: this.description,
+      completed: this.completed,
+    });
     return this.todos;
   }
 
@@ -35,13 +39,10 @@ class TODO {
 
   clearCompleted() {
     this.todos = this.readTodo();
-    const completedTodos = this.todos.filter((todo) => todo.completed === true);
-    const { length } = completedTodos;
-    completedTodos.forEach((todo) => {
-      this.removeTodo(todo.index);
-    });
+    this.todos = this.todos.filter((todo) => todo.completed !== true);
+    this.arrangeIndex();
+    this.storeTodo();
     this.renderPage();
-    return length;
   }
 
   removeTodo(id) {
@@ -49,7 +50,6 @@ class TODO {
     this.todos = this.todos.filter((todo) => todo.index !== Number(id));
     this.arrangeIndex();
     this.storeTodo();
-    this.renderPage();
     return this.todos;
   }
 
@@ -67,7 +67,6 @@ class TODO {
     this.todos = this.readTodo();
     this.todos[Number(id)].completed = status;
     this.storeTodo();
-    this.renderPage();
   }
 
   renderPage() {
@@ -76,6 +75,12 @@ class TODO {
     this.todos.forEach((task) => {
       appendTodoList(task);
     });
+  }
+
+  updateDescription(val, id) {
+    this.todos = this.readTodo();
+    this.todos[Number(id)].description = val;
+    this.storeTodo();
   }
 }
 
