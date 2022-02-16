@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet) ![](https://img.shields.io/badge/MENGSTU-FENTAW-success) [![](https://img.shields.io/badge/LIVE-DEMO-blue)]()
 
 # Awesome Books
-This project allows users to add/remove todo-list from a list. This is done by using JavaScript ES6.
+This project allows users to add/remove todo-list from a list. This is done by using JavaScript ES6. 
 ## Screenshot
 
 ![screenshot](src/img/todo.png)
