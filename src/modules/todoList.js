@@ -24,6 +24,7 @@ class TODO {
       description: this.description,
       completed: this.completed,
     });
+    window.location.reload();
     return this.todos;
   }
 
