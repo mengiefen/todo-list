@@ -42,7 +42,7 @@ class TODO {
     this.todos = this.todos.filter((todo) => todo.completed !== true);
     this.arrangeIndex();
     this.storeTodo();
-    this.renderPage();
+    window.location.reload();
   }
 
   removeTodo(id) {
