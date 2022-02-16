@@ -1,4 +1,4 @@
-const todoList = document.querySelector('.todo-lists-holder');
+import { todoList } from './elements.js';
 
 const createTodoListRow = (todoItem) => {
   const rowHTML = `

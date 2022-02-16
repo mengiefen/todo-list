@@ -1,4 +1,5 @@
-import { descInput } from './elements.js';
+import { descInput, todoList } from './elements.js';
+import appendTodoList from './appendToDoList.js';
 
 class TODO {
   constructor() {
@@ -18,6 +19,7 @@ class TODO {
       completed: this.completed,
     });
     this.storeTodo();
+    this.renderPage();
     return this.todos;
   }
 
@@ -38,6 +40,7 @@ class TODO {
     completedTodos.forEach((todo) => {
       this.removeTodo(todo.index);
     });
+    this.renderPage();
     return length;
   }
 
@@ -46,6 +49,7 @@ class TODO {
     this.todos = this.todos.filter((todo) => todo.index !== Number(id));
     this.arrangeIndex();
     this.storeTodo();
+    this.renderPage();
     return this.todos;
   }
 
@@ -63,6 +67,15 @@ class TODO {
     this.todos = this.readTodo();
     this.todos[Number(id)].completed = status;
     this.storeTodo();
+    this.renderPage();
+  }
+
+  renderPage() {
+    todoList.innerHTML = '';
+    this.todos = this.readTodo();
+    this.todos.forEach((task) => {
+      appendTodoList(task);
+    });
   }
 }
 
