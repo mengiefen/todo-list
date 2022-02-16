@@ -58,6 +58,12 @@ class TODO {
       todo.index = index;
     });
   }
+
+  changeStatus(id, status) {
+    this.todos = this.readTodo();
+    this.todos[Number(id)].completed = status;
+    this.storeTodo();
+  }
 }
 
 export default TODO;

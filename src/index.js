@@ -20,8 +20,8 @@ clearCompleted.addEventListener('click', () => {
   newTodo.clearCompleted();
 });
 
-statusInput.forEach((input) => {
-  input.addEventListener('change', (event) => {
-    const { parentNode } = event.taget;
+for (let i = 0; i < statusInput.length; i += 1) {
+  statusInput[i].addEventListener('change', (ev) => {
+    newTodo.changeStatus(ev.target.id, ev.target.checked);
   });
-});
+}

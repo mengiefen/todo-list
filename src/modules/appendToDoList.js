@@ -3,7 +3,7 @@ const todoList = document.querySelector('.todo-lists-holder');
 const createTodoListRow = (todoItem) => {
   const rowHTML = `
   <div class="todo-left">
-    <input type="checkbox" class="status" ${
+    <input type="checkbox" class="status" id = ${todoItem.index}  ${
   todoItem.completed ? 'checked' : ''
 } />
     <p class="description ${todoItem.completed ? 'strike-through' : ''}">${
