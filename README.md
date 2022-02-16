@@ -1,9 +1,9 @@
 
 
-![](https://img.shields.io/badge/Microverse-blueviolet) ![](https://img.shields.io/badge/MENGSTU-FENTAW-success) [![](https://img.shields.io/badge/LIVE-DEMO-blue)]()
+![](https://img.shields.io/badge/Microverse-blueviolet) ![](https://img.shields.io/badge/MENGSTU-FENTAW-success) [![](https://img.shields.io/badge/LIVE-DEMO-blue)](https://mengiefen.github.io/todo-list/)
 
 # Awesome Books
-This project allows users to add/remove todo-list from a list. This is done by using JavaScript ES6.
+This project allows users to add/remove todo-list from a list. This is done by using JavaScript ES6. 
 ## Screenshot
 
 ![screenshot](src/img/todo.png)
@@ -75,7 +75,7 @@ To get a local copy up and running follow these simple example steps.
 
 ## Live Demo
 
-**[FOLLOW THIS LINK TO SEE THE LIVE DEMO]()**
+**[FOLLOW THIS LINK TO SEE THE LIVE DEMO](https://mengiefen.github.io/todo-list/)**
 
 ## 📝 License
 

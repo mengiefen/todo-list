@@ -1,18 +1,20 @@
-const todoList = document.querySelector('.todo-lists-holder');
+import { todoList } from './elements.js';
 
 const createTodoListRow = (todoItem) => {
   const rowHTML = `
   <div class="todo-left">
-    <input type="checkbox" id="status-${todoItem.index}" ${
+    <input type="checkbox" class="status" id = ${todoItem.index}  ${
   todoItem.completed ? 'checked' : ''
 } />
     <p class="description ${todoItem.completed ? 'strike-through' : ''}">${
   todoItem.description
 }</p>
   </div>
-  <button class="btn three-dots">
-  <i class="bi bi-three-dots-vertical"></i>
-  <i class="bi bi-trash"></i>
+  <button class="btn btn-edit">
+    <i class="bi bi-three-dots-vertical"></i>
+  </button>  
+  <button class="btn btn-delete">  
+    <i class="bi bi-trash"></i>
   </button>`;
   return rowHTML;
 };

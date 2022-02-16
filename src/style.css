@@ -67,6 +67,11 @@ body {
   padding: 1rem;
 }
 
+.todo-list-row:hover,
+.todo-list-row:active {
+  background: rgb(231, 231, 228);
+}
+
 .todo-left {
   display: flex;
   align-items: center;
@@ -95,7 +100,7 @@ body {
   cursor: pointer;
 }
 
-.bi-trash {
+.btn-delete {
   display: none;
 }
 
@@ -106,4 +111,8 @@ body {
   border-top: 0.5px solid #bfcaca;
   padding-top: 2rem;
   color: #555;
+}
+
+.row-bg {
+  background: rgb(226, 223, 197);
 }
