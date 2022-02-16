@@ -7,6 +7,7 @@ import {
   editButton,
   deleteButton,
   form,
+  refreshButton,
 } from './modules/elements.js';
 
 const newTodo = new TODO();
@@ -84,3 +85,9 @@ for (let i = 0; i < deleteButton.length; i += 1) {
     });
   }
 }
+
+const handleReload = () => {
+  window.location.reload();
+};
+
+refreshButton.addEventListener('click', handleReload);
