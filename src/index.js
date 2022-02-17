@@ -115,3 +115,38 @@ const handleSwap = (fromIndex, toIndex) => {
   renderPage();
 };
 
+function dragStart() {
+  dragIndex = Number(this.closest('div').getAttribute('id'));
+}
+
+function dragOver(e) {
+  e.preventDefault();
+}
+
+function dragDrop() {
+  const end = +this.getAttribute('data-id');
+  handleSwap(dragIndex, end);
+  this.classList.remove('over');
+}
+
+function dragLeave() {
+  this.classList.remove('over');
+}
+
+function dragEnter() {
+  this.classList.add('over');
+}
+
+const todoItems = document.querySelectorAll('.row-elements');
+const rowHolder = document.querySelectorAll('.todo-list-row');
+
+todoItems.forEach((row) => {
+  row.addEventListener('dragstart', dragStart);
+});
+
+rowHolder.forEach((holder) => {
+  holder.addEventListener('dragover', dragOver);
+  holder.addEventListener('drop', dragDrop);
+  holder.addEventListener('dragenter', dragEnter);
+  holder.addEventListener('dragleave', dragLeave);
+});
