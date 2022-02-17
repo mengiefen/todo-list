@@ -100,6 +100,7 @@ for (let i = 0; i < deleteButton.length; i += 1) {
       const { id } = parentNode;
       newTodo.removeTodo(id);
       renderPage();
+      window.location.reload();
     });
   }
 }
