@@ -18,19 +18,44 @@ html {
 }
 
 body {
-  width: 100%;
+  width: 100vw;
 }
 
 .todo-lists {
   margin: 5rem auto;
   padding: 2rem;
   box-shadow: 5px 5px 5px 5px #bfcaca;
-  width: 35%;
+  width: 50%;
+}
+
+@media screen and (max-width: 540px) {
+  .todo-lists {
+    min-width: 95%;
+    margin: 2rem auto;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .todo-lists {
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .todo-lists {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .todo-lists {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .todo-lists {
+    width: 60%;
   }
 }
 
@@ -59,7 +84,7 @@ body {
   font-style: italic;
 }
 
-.todo-list-row {
+.row-elements {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,8 +93,10 @@ body {
 }
 
 .todo-list-row:hover,
-.todo-list-row:active {
-  background: rgb(231, 231, 228);
+.todo-list-row:active,
+.todo-list-row:hover i,
+.todo-list-row:active i {
+  background: #fafafa;
 }
 
 .todo-left {
@@ -115,4 +142,8 @@ body {
 
 .row-bg {
   background: rgb(226, 223, 197);
+}
+
+.over {
+  background: #e9e9e9;
 }
