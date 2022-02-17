@@ -1,5 +1,4 @@
-import { descInput, todoList } from './elements.js';
-import appendTodoList from './appendToDoList.js';
+import { descInput } from './elements.js';
 
 class TODO {
   constructor() {
@@ -10,7 +9,6 @@ class TODO {
   }
 
   addTodo() {
-    this.todos = this.readTodo();
     this.description = descInput.value;
     this.index = this.todos.length;
     this.todos.push({
@@ -19,12 +17,6 @@ class TODO {
       completed: this.completed,
     });
     this.storeTodo();
-    appendTodoList({
-      index: this.index,
-      description: this.description,
-      completed: this.completed,
-    });
-    window.location.reload();
     return this.todos;
   }
 
@@ -39,15 +31,12 @@ class TODO {
   }
 
   clearCompleted() {
-    this.todos = this.readTodo();
     this.todos = this.todos.filter((todo) => todo.completed !== true);
     this.arrangeIndex();
     this.storeTodo();
-    window.location.reload();
   }
 
   removeTodo(id) {
-    this.todos = this.readTodo();
     this.todos = this.todos.filter((todo) => todo.index !== Number(id));
     this.arrangeIndex();
     this.storeTodo();
@@ -65,22 +54,22 @@ class TODO {
   }
 
   changeStatus(id, status) {
-    this.todos = this.readTodo();
     this.todos[Number(id)].completed = status;
     this.storeTodo();
   }
 
-  renderPage() {
-    todoList.innerHTML = '';
-    this.todos = this.readTodo();
-    this.todos.forEach((task) => {
-      appendTodoList(task);
-    });
+  updateDescription(val, id) {
+    this.todos[Number(id)].description = val;
+    this.storeTodo();
   }
 
-  updateDescription(val, id) {
-    this.todos = this.readTodo();
-    this.todos[Number(id)].description = val;
+  swapTodos(fromIndex, toIndex) {
+    const firstTodo = this.todos[fromIndex];
+    const secondTodo = this.todos[toIndex];
+    firstTodo.index = toIndex;
+    secondTodo.index = fromIndex;
+    this.todos[toIndex] = firstTodo;
+    this.todos[fromIndex] = secondTodo;
     this.storeTodo();
   }
 }
