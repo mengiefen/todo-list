@@ -1,68 +1,117 @@
 import './style.css';
 import TODO from './modules/todoList.js';
 import {
-  descInput,
-  clearCompleted,
-  statusInput,
-  editButton,
-  deleteButton,
   form,
-  refreshButton,
 } from './modules/elements.js';
+
+import { appendTodoList, removeChildNodes } from './modules/appendToDoList.js';
 
 const newTodo = new TODO();
 
-newTodo.renderPage();
+function renderPage() {
+  const todoListItems = newTodo.readTodo();
+  removeChildNodes();
+  todoListItems.forEach((todoItem) => {
+    appendTodoList(todoItem);
+  });
+}
 
-descInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && descInput.value !== '') {
+renderPage();
+
+const eventHandler = (eventType, selector, callback) => {
+  document.addEventListener(eventType, (e) => {
+    if (e.target.matches(selector)) callback(e);
+  });
+};
+
+eventHandler('keypress', '#todo-input', (e) => {
+  if (e.key === 'Enter' && e.target.value !== '') {
     newTodo.addTodo();
+    renderPage();
     e.preventDefault();
     form.reset();
   }
 });
 
-clearCompleted.addEventListener('click', () => {
+eventHandler('click', '.btn-clear', () => {
   newTodo.clearCompleted();
+  renderPage();
 });
 
-clearCompleted.addEventListener('click', () => {
-  newTodo.clearCompleted();
+eventHandler('change', '.status', (ev) => {
+  const id = ev.target.id.split('-')[1];
+  newTodo.changeStatus(id, ev.target.checked);
+  const { parentNode } = ev.target;
+  parentNode.querySelector('.description').classList.toggle('strike-through');
 });
-for (let i = 0; i < statusInput.length; i += 1) {
-  statusInput[i].addEventListener('change', (ev) => {
-    newTodo.changeStatus(ev.target.id, ev.target.checked);
-    const { parentNode } = ev.target;
-    parentNode.querySelector('.description').classList.toggle('strike-through');
-  });
-}
 
-for (let i = 0; i < editButton.length; i += 1) {
-  editButton[i].addEventListener('click', (event) => {
-    const { parentNode } = event.target.parentNode;
-    const deleteButton = parentNode.getElementsByClassName('btn-delete')[0];
-    const desc = parentNode.querySelector('.description');
-    desc.contentEditable = true;
-    editButton[i].style.display = 'none';
-    deleteButton.style.display = 'block';
-  });
-}
+eventHandler('click', '.bi-three-dots-vertical', (event) => {
+  const { parentNode } = event.target.parentNode;
+  const deleteButton = parentNode.getElementsByClassName('btn-delete')[0];
+  const editButton = parentNode.querySelector('.btn-edit');
+  const desc = parentNode.querySelector('.description');
+  desc.contentEditable = true;
+  editButton.style.display = 'none';
+  deleteButton.style.display = 'block';
+});
+
+eventHandler('click', '.bi-trash', (e) => {
+  const { parentNode } = e.target.parentNode;
+  const { id } = parentNode;
+  newTodo.removeTodo(id);
+  renderPage();
+});
+
+eventHandler('click', '.bi-arrow-repeat', () => {
+  window.location.reload();
+});
+
+let dragIndex;
+
+const handleSwap = (fromIndex, toIndex) => {
+  newTodo.swapTodos(fromIndex, toIndex);
+  renderPage();
+};
+
+eventHandler('dragstart', '.row-elements', (e) => {
+  dragIndex = Number(e.target.closest('div').getAttribute('id'));
+});
+
+eventHandler('dragover', '.row-elements', (e) => {
+  e.preventDefault();
+});
+
+eventHandler('drop', '.row-elements', (e) => {
+  const end = +e.target.parentNode.getAttribute('data-id');
+  handleSwap(dragIndex, end);
+  e.target.classList.remove('over');
+});
+eventHandler('dragenter', '.row-elements', (e) => {
+  e.target.classList.add('over');
+});
+eventHandler('dragleave', '.row-elements', (e) => {
+  e.target.classList.remove('over');
+});
 
 const description = document.querySelectorAll('.description');
 
-description.forEach((element) => {
+description.forEach((element, index) => {
   if (element.contentEditable) {
     element.classList.add('editable');
-    const { id } = element.parentNode.querySelector('.status');
+    const { id } = element.parentNode;
     let { innerText: val } = element.parentNode.querySelector('.status');
 
     element.addEventListener('input', () => {
       val = element.innerText;
 
       setTimeout(() => {
+        const btnD = document.querySelectorAll('.btn-delete');
+        const btnE = document.querySelectorAll('.btn-edit');
         newTodo.updateDescription(val, id);
+        btnD[index].style.display = 'none';
+        btnE[index].style.display = 'block';
         element.contentEditable = false;
-      }, 10000);
+      }, 5000);
     });
 
     element.addEventListener('keypress', (e) => {
@@ -74,20 +123,3 @@ description.forEach((element) => {
     });
   }
 });
-
-for (let i = 0; i < deleteButton.length; i += 1) {
-  if (deleteButton[i]) {
-    deleteButton[i].addEventListener('click', (e) => {
-      const { parentNode } = e.target.parentNode;
-      const { id } = parentNode.querySelector('.status');
-      parentNode.style.display = 'none';
-      newTodo.removeTodo(id);
-    });
-  }
-}
-
-const handleReload = () => {
-  window.location.reload();
-};
-
-refreshButton.addEventListener('click', handleReload);
