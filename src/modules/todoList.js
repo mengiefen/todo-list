@@ -17,7 +17,6 @@ class TODO {
       completed: this.completed,
     });
     this.storeTodo();
-    return this.todos;
   }
 
   readTodo() {

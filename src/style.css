@@ -14,14 +14,17 @@
 html {
   scroll-behavior: smooth;
   font-family: Lato, serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 body {
   width: 100vw;
+  background-color: #edf1f1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%232b7a78' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 .todo-lists {
+  background-color: #e7e5eb;
   margin: 5rem auto;
   padding: 2rem;
   box-shadow: 5px 5px 5px 5px #bfcaca;
@@ -82,21 +85,30 @@ body {
   outline: none;
   font-size: 1.4rem;
   font-style: italic;
+  background-color: #e7e5eb;
 }
 
 .row-elements {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 0.5px solid #bfcaca;
-  padding: 1rem;
+  border-top: 0.5px solid #acb3b3;
+  padding: 0.5rem 1rem;
+}
+
+i {
+  background-color: #e7e5eb;
 }
 
 .todo-list-row:hover,
 .todo-list-row:active,
 .todo-list-row:hover i,
 .todo-list-row:active i {
-  background: #fafafa;
+  background-color: #dfdbe5;
+}
+
+.todo-list-row:active {
+  font-weight: 700;
 }
 
 .todo-left {
@@ -111,7 +123,8 @@ body {
 }
 
 .description {
-  padding-left: 2rem;
+  padding: 1rem 0.5rem;
+  margin-left: 2rem;
   font-size: 1.5rem;
 }
 
@@ -132,12 +145,17 @@ body {
 }
 
 .btn-clear {
+  background-color: #e7e5eb;
   width: 100%;
   font-size: 1.7rem;
   font-weight: 400;
   border-top: 0.5px solid #bfcaca;
   padding-top: 2rem;
   color: #555;
+}
+
+.btn-clear:hover {
+  color: black;
 }
 
 .row-bg {

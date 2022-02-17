@@ -28,21 +28,19 @@ descInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && descInput.value !== '') {
     newTodo.addTodo();
     renderPage();
+    window.location.reload();
     e.preventDefault();
     form.reset();
   }
 });
 
-clearCompleted.addEventListener(
-  'click',
-  (e) => {
-    newTodo.clearCompleted();
-    renderPage();
-    e.preventDefault();
-    e.stopPropagation();
-  },
-  { once: true },
-);
+const clearCompletedTasks = () => {
+  newTodo.clearCompleted();
+  renderPage();
+  window.location.reload();
+};
+
+clearCompleted.addEventListener('click', clearCompletedTasks);
 
 for (let i = 0; i < statusInput.length; i += 1) {
   statusInput[i].addEventListener('change', (ev) => {
@@ -66,7 +64,7 @@ for (let i = 0; i < editButton.length; i += 1) {
 
 const description = document.querySelectorAll('.description');
 
-description.forEach((element) => {
+description.forEach((element, index) => {
   if (element.contentEditable) {
     element.classList.add('editable');
     const { id } = element.parentNode;
@@ -76,9 +74,13 @@ description.forEach((element) => {
       val = element.innerText;
 
       setTimeout(() => {
+        const btnD = document.querySelectorAll('.btn-delete');
+        const btnE = document.querySelectorAll('.btn-edit');
         newTodo.updateDescription(val, id);
+        btnD[index].style.display = 'none';
+        btnE[index].style.display = 'block';
         element.contentEditable = false;
-      }, 10000);
+      }, 5000);
     });
 
     element.addEventListener('keypress', (e) => {
