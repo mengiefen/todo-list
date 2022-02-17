@@ -115,6 +115,7 @@ let dragIndex;
 const handleSwap = (fromIndex, toIndex) => {
   newTodo.swapTodos(fromIndex, toIndex);
   renderPage();
+  window.location.reload();
 };
 
 function dragStart() {
