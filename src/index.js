@@ -10,28 +10,44 @@ import {
   refreshButton,
 } from './modules/elements.js';
 
+import { appendTodoList, removeChildNodes } from './modules/appendToDoList.js';
+
 const newTodo = new TODO();
 
-newTodo.renderPage();
+function renderPage() {
+  const todoListItems = newTodo.readTodo();
+  removeChildNodes();
+  todoListItems.forEach((todoItem) => {
+    appendTodoList(todoItem);
+  });
+}
+
+renderPage();
 
 descInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && descInput.value !== '') {
     newTodo.addTodo();
+    renderPage();
     e.preventDefault();
     form.reset();
   }
 });
 
-clearCompleted.addEventListener('click', () => {
-  newTodo.clearCompleted();
-});
+clearCompleted.addEventListener(
+  'click',
+  (e) => {
+    newTodo.clearCompleted();
+    renderPage();
+    e.preventDefault();
+    e.stopPropagation();
+  },
+  { once: true },
+);
 
-clearCompleted.addEventListener('click', () => {
-  newTodo.clearCompleted();
-});
 for (let i = 0; i < statusInput.length; i += 1) {
   statusInput[i].addEventListener('change', (ev) => {
-    newTodo.changeStatus(ev.target.id, ev.target.checked);
+    const id = ev.target.id.split('-')[1];
+    newTodo.changeStatus(id, ev.target.checked);
     const { parentNode } = ev.target;
     parentNode.querySelector('.description').classList.toggle('strike-through');
   });
@@ -53,7 +69,7 @@ const description = document.querySelectorAll('.description');
 description.forEach((element) => {
   if (element.contentEditable) {
     element.classList.add('editable');
-    const { id } = element.parentNode.querySelector('.status');
+    const { id } = element.parentNode;
     let { innerText: val } = element.parentNode.querySelector('.status');
 
     element.addEventListener('input', () => {
@@ -79,9 +95,9 @@ for (let i = 0; i < deleteButton.length; i += 1) {
   if (deleteButton[i]) {
     deleteButton[i].addEventListener('click', (e) => {
       const { parentNode } = e.target.parentNode;
-      const { id } = parentNode.querySelector('.status');
-      parentNode.style.display = 'none';
+      const { id } = parentNode;
       newTodo.removeTodo(id);
+      renderPage();
     });
   }
 }
@@ -91,3 +107,11 @@ const handleReload = () => {
 };
 
 refreshButton.addEventListener('click', handleReload);
+
+let dragIndex;
+
+const handleSwap = (fromIndex, toIndex) => {
+  newTodo.swapTodos(fromIndex, toIndex);
+  renderPage();
+};
+
