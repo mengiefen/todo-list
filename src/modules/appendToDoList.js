@@ -43,6 +43,7 @@ const createTodoListRow = (todoItem) => {
   btnDelete.classList.add('btn-delete');
   iconThreeDots.classList.add('bi-three-dots-vertical');
   iconTrash.classList.add('bi-trash');
+
   if (todoItem.completed) {
     todoPara.classList.add('strike-through');
   } else {

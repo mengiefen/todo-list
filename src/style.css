@@ -31,7 +31,7 @@ html {
 body {
   width: 100vw;
   background-color: #edf1f1;
-  background-image: url('img/bg.jpeg');
+  background-image: url("img/bg.jpeg");
 }
 
 .todo-lists {
@@ -89,6 +89,28 @@ body {
   color: #555;
 }
 
+.btn-refresh {
+  transition: all 2s;
+}
+
+.btn-refresh:hover,
+.btn-refresh:active {
+  -moz-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+.bi-arrow-repeat {
+  color: #559089;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.bi-arrow-repeat:hover,
+.bi-arrow-repeat:focus,
+.bi-arrow-repeat:active{
+  color: var(--pink);
+}
+
 #todo-input {
   padding: 1.2rem 1rem;
   margin: 0.3rem 0;
@@ -122,6 +144,10 @@ i {
   background-color: var(--darkblue);
 }
 
+.todo-list-row {
+  position: relative;
+}
+
 .todo-list-row:hover,
 .todo-list-row:active,
 .todo-list-row:hover i,
@@ -131,12 +157,13 @@ i {
 }
 
 .todo-list-row:active {
-  font-weight: 700;
+  color: var(--green);
 }
 
 .todo-left {
   display: flex;
   align-items: center;
+  max-width: 80%;
 }
 
 .description {
@@ -144,6 +171,8 @@ i {
   margin-left: 2rem;
   font-size: 1.5rem;
   color: var(--blue);
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .strike-through {
@@ -160,12 +189,14 @@ i {
   outline: none;
   width: auto;
   border: none;
-  background: white;
   cursor: pointer;
+  background: var(--darkblue);
 }
 
 .btn-delete {
   display: none;
+  position: absolute;
+  right: 0;
 }
 
 .btn-clear {
@@ -176,6 +207,11 @@ i {
   padding-top: 2rem;
   color: #555;
   background-color: var(--darkblue);
+}
+
+.btn-edit {
+  position: absolute;
+  right: 0;
 }
 
 .btn-clear:hover {
