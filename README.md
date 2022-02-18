@@ -11,7 +11,7 @@ This project allows users to add/remove todo-list from a list. This is done by u
 ## Built with
 
 - Major languages: HTML, CSS, JavaScript
-- Technologies used: Github, Linters
+- Technologies used: Github, Linters, Webpack
 
 ## Getting Started
 
@@ -46,9 +46,6 @@ To get a local copy up and running follow these simple example steps.
 
   `npm install --save-dev eslint@7.x eslint-config-airbnb-base@14.x eslint-plugin-import@2.x babel-eslint@10.x`
 
- - **luxon** libray
-
-    `npm install --save luxon`
 
 
 ### Run tests
@@ -63,7 +60,7 @@ To get a local copy up and running follow these simple example steps.
 
 👤 **Mengstu Fentaw**
 
-- GitHub: [@mengiefen](https://github.com/mengiefen)
+- Github: [@mengiefen](https://github.com/mengiefen)
 - Twitter: [@MengistuFentaw](https://twitter.com/MengistuFentaw)
 - Linkedin: [@mengefen](https://www.linkedin.com/in/mengefen/)
 
