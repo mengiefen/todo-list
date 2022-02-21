@@ -50,6 +50,9 @@ eventHandler('click', '.bi-three-dots-vertical', (event) => {
   const editButton = parentNode.querySelector('.btn-edit');
   const desc = parentNode.querySelector('.description');
   desc.contentEditable = true;
+  desc.focus();
+  desc.style.border = '2px solid #bfcaca';
+  desc.style.borderRadius = '5px';
   editButton.style.display = 'none';
   deleteButton.style.display = 'block';
 });
@@ -85,9 +88,11 @@ eventHandler('drop', '.row-elements', (e) => {
   handleSwap(dragIndex, end);
   e.target.classList.remove('over');
 });
+
 eventHandler('dragenter', '.row-elements', (e) => {
   e.target.classList.add('over');
 });
+
 eventHandler('dragleave', '.row-elements', (e) => {
   e.target.classList.remove('over');
 });
@@ -101,7 +106,7 @@ eventHandler('mouseout', '.bi-three-dots-vertical', (e) => {
 });
 
 eventHandler('mouseover', '.bi-trash', (e) => {
-  e.target.style.color = '#770000';
+  e.target.style.color = '#ee0000';
 });
 
 const description = document.querySelectorAll('.description');
@@ -121,16 +126,25 @@ description.forEach((element, index) => {
         newTodo.updateDescription(val, id);
         btnD[index].style.display = 'none';
         btnE[index].style.display = 'block';
+        element.style.border = '2px solid #161b40';
+        element.blur();
         element.contentEditable = false;
       }, 5000);
     });
-
-    element.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        element.contentEditable = false;
-        val = val.substring(0, val.length - 1);
-        newTodo.updateDescription(val, id);
-      }
-    });
+  }
+});
+eventHandler('keypress', '.description', (e) => {
+  if (e.key === 'Enter') {
+    const { id, parentNode } = e.target.parentNode;
+    const btnD = parentNode.querySelector('.btn-delete');
+    const btnE = parentNode.querySelector('.btn-edit');
+    e.target.style.border = '2px solid #161b40';
+    e.target.blur();
+    e.target.contentEditable = false;
+    let val = e.target.innerText;
+    val = val.substring(0, val.length - 1);
+    newTodo.updateDescription(val, id);
+    btnD.style.display = 'none';
+    btnE.style.display = 'block';
   }
 });

@@ -107,7 +107,7 @@ body {
 
 .bi-arrow-repeat:hover,
 .bi-arrow-repeat:focus,
-.bi-arrow-repeat:active{
+.bi-arrow-repeat:active {
   color: var(--pink);
 }
 
