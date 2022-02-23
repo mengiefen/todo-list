@@ -1,26 +1,21 @@
-const TODO = require('./todoList.js');
+/**
+ * @jest-environment jsdom
+ */
 
-const todo = new TODO();
+const TODO = require('./todoList.js');
+const appendTodoList = require('./__mock__/appendToDOList.js');
 
 describe('Test for add function and remove function', () => {
+  const todoItem = { index: 0, description: 'New Task', completed: false };
+  const todo = new TODO(todoItem);
   test('Add one new item to the list', () => {
-    document.body.innerHTML = `
-    <div class="todo-left">
-      <input type="checkbox" class="status" id = ${todoItem.index}  ${
-  todoItem.completed ? 'checked' : ''
-} />
-      <p class="description ${todoItem.completed ? 'strike-through' : ''}">${
-  todoItem.description
-}</p>
-    </div>
-    <button class="btn btn-edit">
-      <i class="bi bi-three-dots-vertical"></i>
-    </button>  
-    <button class="btn btn-delete">  
-      <i class="bi bi-trash"></i>
-    </button>`;
+    appendTodoList(todoItem);
     todo.addTodo();
-    const list = document.querySelectorAll('#list li');
+    const list = document.querySelectorAll('.row-elements');
     expect(list).toHaveLength(1);
+  });
+
+  test('remove element at index 0', () => {
+    expect(todo.removeTodo(0)).toHaveLength(0);
   });
 });

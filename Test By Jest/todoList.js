@@ -7,14 +7,24 @@ class TODO {
   }
 
   addTodo() {
-    const descInput = document.querySelector('#todo-input');
-    this.description = descInput.value;
+    this.description = 0;
     this.index = this.todos.length;
     this.todos.push({
       index: this.index,
       description: this.description,
       completed: this.completed,
     });
+    this.storeTodo();
+  }
+
+  readTodo() {
+    const TODOS = JSON.parse(localStorage.getItem('todos'));
+    if (TODOS) {
+      this.todos = TODOS;
+    } else {
+      this.todos = [];
+    }
+    return this.todos;
   }
 
   removeTodo(id) {
@@ -35,4 +45,4 @@ class TODO {
   }
 }
 
-export default TODO;
+module.exports = TODO;
