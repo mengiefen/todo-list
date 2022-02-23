@@ -163,7 +163,7 @@ i {
 .todo-left {
   display: flex;
   align-items: center;
-  max-width: 80%;
+  min-width: 100%;
 }
 
 .description {
@@ -171,8 +171,20 @@ i {
   margin-left: 2rem;
   font-size: 1.5rem;
   color: var(--blue);
-  max-width: 100%;
+  width: 85%;
   overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 768px) {
+  .description {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .description {
+    width: 75%;
+  }
 }
 
 .strike-through {
@@ -223,9 +235,15 @@ i {
 }
 
 .over {
-  background: #e9e9e9;
+  background: rgb(4, 19, 39);
 }
 
 .todo-list-row:first-child {
   border-top: none;
+}
+
+.focus {
+  border: 2px solid #bfcaca;
+  border-radius: 5px;
+  background-color: #272b42;
 }
