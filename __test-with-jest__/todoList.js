@@ -34,7 +34,12 @@ class TODO {
     return this.todos;
   }
 
-  updateDescription(val, id) {    
+  changeStatus(id, status) {
+    this.todos[Number(id)].completed = status;
+    return this.todos[Number(id)].completed;
+  }
+
+  updateDescription(val, id) {
     this.todos[id].description = val;
     return this.todos;
   }

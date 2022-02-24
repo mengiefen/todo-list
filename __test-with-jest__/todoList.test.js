@@ -31,4 +31,13 @@ describe('Test for add function and remove function', () => {
     const description = document.querySelector('.description');
     expect(description.textContent).toBe('New Task3');
   });
+
+  test('Completed Status Update', () => {
+    let input = document.querySelector('.status');
+    const { id } = input;
+    todo.changeStatus(id, true);
+    appendTodoList(todo.readTodo()[0]);
+    input = document.querySelector('.status');
+    expect(input.checked).toBeTruthy();
+  });
 });
