@@ -12,8 +12,6 @@ const appendTodoList = (todo) => {
     <i class="bi bi-trash"></i>
   </button>
   </div>`;
-
-  
 };
 
 module.exports = appendTodoList;
