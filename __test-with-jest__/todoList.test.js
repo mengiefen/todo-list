@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-const todoList = require('./__mock__/storage.js');
 const TODO = require('./todoList.js');
 const appendTodoList = require('./__mock__/appendToDOList.js');
 
@@ -10,6 +9,7 @@ describe('Test for add function and remove function', () => {
   const todo = new TODO();
   test('Add one new item to the list', () => {
     todo.addTodo('New Task1');
+    const todoList = todo.readTodo();
     appendTodoList(todoList);
     const list = document.querySelectorAll('.row-elements');
     expect(list).toHaveLength(1);
@@ -21,9 +21,14 @@ describe('Test for add function and remove function', () => {
 
   test('test update description', () => {
     // const descInput = document.querySelector('#todo-input');
-    todo.addTodo('New Task2')
-    const description = document.querySelectorAll('.description');
-    const descriptionText = description.textContent;
-    console.log(descriptionText);
+    todo.addTodo('New Task2');
+
+    appendTodoList(todo.readTodo()[0]);
+    const input = document.querySelector('.status');
+    const { id } = input;
+    todo.updateDescription('New Task3', Number(id));
+    appendTodoList(todo.readTodo()[0]);
+    const description = document.querySelector('.description');
+    expect(description.textContent).toBe('New Task3');
   });
 });

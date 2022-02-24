@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 let todoList = require('./__mock__/storage.js');
 
 class TODO {
@@ -10,49 +13,30 @@ class TODO {
 
   addTodo(desc) {
     this.description = desc;
-    this.index = todoList.length;
+    this.index = this.todos.length;
     const task = {
       index: this.index,
       description: this.description,
       completed: this.completed,
     };
-    this.storeTodo(task);
-    return todoList;
+    this.todos.push(task);
+    return this.todos;
   }
 
   readTodo() {
-    const TODOS = JSON.parse(localStorage.getItem('todos'));
-    if (TODOS) {
-      this.todos = TODOS;
-    } else {
-      this.todos = [];
-    }
     return this.todos;
   }
 
   removeTodo(id) {
-    todoList = todoList.filter((todo) => todo.index !== Number(id));
+    todoList = this.todos.filter((todo) => todo.index !== Number(id));
     this.todos = [...todoList];
-    this.arrangeIndex();
-    this.storeTodo();
+    // document.body.remove();
     return this.todos;
   }
 
-  storeTodo(task) {
-    todoList.push(task);
-    this.todos = [...todoList];
-  }
-
-  updateDescription(val, id) {
-    todoList[Number(id)].description = val;
-    this.storeTodo();
-  }
-
-  arrangeIndex() {
-    this.todos.forEach((todo, index) => {
-      todo.index = index;
-    });
-    todoList = [...this.todos];
+  updateDescription(val, id) {    
+    this.todos[id].description = val;
+    return this.todos;
   }
 }
 

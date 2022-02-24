@@ -1,7 +1,5 @@
-const appendTodoList = (todoItem) => {
-  todoItem.forEach((todo) => {
-    document.body.innerHTML = `
-  <input type="text" id="todo-input" placeholder="Add to your list" />
+const appendTodoList = (todo) => {
+  document.body.innerHTML = `  
   <div class = 'row-elements'>
   <div class="todo-left">
     <input type="checkbox" class="status" id = ${todo.index}  ${todo.completed ? 'checked' : ''} />
@@ -14,7 +12,8 @@ const appendTodoList = (todoItem) => {
     <i class="bi bi-trash"></i>
   </button>
   </div>`;
-  });
+
+  
 };
 
 module.exports = appendTodoList;
