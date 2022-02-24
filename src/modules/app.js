@@ -17,7 +17,7 @@ renderPage();
 
 const eventHandler = (eventType, selector, callback) => {
   document.addEventListener(eventType, (e) => {
-    if (e.target.matches(selector)) callback(e);
+    if (e.target.matches(selector) && true) callback(e);
   });
 };
 
