@@ -40,4 +40,12 @@ describe('Test for add function and remove function', () => {
     input = document.querySelector('.status');
     expect(input.checked).toBeTruthy();
   });
+
+  test('clear all completed', () => {
+    todo.addTodo('New Task4');
+    todo.clearCompleted();
+    appendTodoList(todo.readTodo()[0]);
+    const input = document.querySelector('.status');
+    expect(input.checked).toBeFalsy();
+  });
 });

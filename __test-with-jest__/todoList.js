@@ -43,6 +43,11 @@ class TODO {
     this.todos[id].description = val;
     return this.todos;
   }
+
+  clearCompleted() {
+    this.todos = this.todos.filter((todo) => todo.completed !== true);
+    return this.todos;
+  }
 }
 
 module.exports = TODO;
