@@ -1,13 +1,9 @@
-const appendTodoList = (todoItem) => {
-  document.body.innerHTML = `
+const appendTodoList = (todo) => {
+  document.body.innerHTML = `  
   <div class = 'row-elements'>
   <div class="todo-left">
-    <input type="checkbox" class="status" id = ${todoItem.index}  ${
-  todoItem.completed ? 'checked' : ''
-} />
-    <p class="description ${todoItem.completed ? 'strike-through' : ''}">${
-  todoItem.description
-}</p>
+    <input type="checkbox" class="status" id = ${todo.index}  ${todo.completed ? 'checked' : ''} />
+    <p class="description ${todo.completed ? 'strike-through' : ''}">${todo.description}</p>
   </div>
   <button class="btn btn-edit">
     <i class="bi bi-three-dots-vertical"></i>

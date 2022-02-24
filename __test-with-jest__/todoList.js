@@ -1,3 +1,8 @@
+/**
+ * @jest-environment jsdom
+ */
+let todoList = require('./__mock__/storage.js');
+
 class TODO {
   constructor() {
     this.index = 0;
@@ -6,42 +11,42 @@ class TODO {
     this.todos = [];
   }
 
-  addTodo() {
-    this.description = 0;
+  addTodo(desc) {
+    this.description = desc;
     this.index = this.todos.length;
-    this.todos.push({
+    const task = {
       index: this.index,
       description: this.description,
       completed: this.completed,
-    });
-    this.storeTodo();
+    };
+    this.todos.push(task);
+    return this.todos;
   }
 
   readTodo() {
-    const TODOS = JSON.parse(localStorage.getItem('todos'));
-    if (TODOS) {
-      this.todos = TODOS;
-    } else {
-      this.todos = [];
-    }
     return this.todos;
   }
 
   removeTodo(id) {
-    this.todos = this.todos.filter((todo) => todo.index !== Number(id));
-    this.arrangeIndex();
-    this.storeTodo();
+    todoList = this.todos.filter((todo) => todo.index !== Number(id));
+    this.todos = [...todoList];
+    // document.body.remove();
     return this.todos;
   }
 
-  storeTodo() {
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+  changeStatus(id, status) {
+    this.todos[Number(id)].completed = status;
+    return this.todos[Number(id)].completed;
   }
 
-  arrangeIndex() {
-    this.todos.forEach((todo, index) => {
-      todo.index = index;
-    });
+  updateDescription(val, id) {
+    this.todos[id].description = val;
+    return this.todos;
+  }
+
+  clearCompleted() {
+    this.todos = this.todos.filter((todo) => todo.completed !== true);
+    return this.todos;
   }
 }
 
