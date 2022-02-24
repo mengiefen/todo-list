@@ -1,3 +1,5 @@
+let todoList = require('./__mock__/storage.js');
+
 class TODO {
   constructor() {
     this.index = 0;
@@ -6,15 +8,16 @@ class TODO {
     this.todos = [];
   }
 
-  addTodo() {
-    this.description = 0;
+  addTodo(desc) {
+    this.description = desc;
     this.index = this.todos.length;
-    this.todos.push({
+    todoList.push({
       index: this.index,
       description: this.description,
       completed: this.completed,
     });
     this.storeTodo();
+    return todoList;
   }
 
   readTodo() {
@@ -28,7 +31,7 @@ class TODO {
   }
 
   removeTodo(id) {
-    this.todos = this.todos.filter((todo) => todo.index !== Number(id));
+    todoList = todoList.filter((todo) => todo.index !== Number(id));
     this.arrangeIndex();
     this.storeTodo();
     return this.todos;
@@ -36,6 +39,11 @@ class TODO {
 
   storeTodo() {
     localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  updateDescription(val, id) {
+    todoList[Number(id)].description = val;
+    this.storeTodo();
   }
 
   arrangeIndex() {

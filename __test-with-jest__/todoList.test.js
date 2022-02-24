@@ -10,12 +10,19 @@ describe('Test for add function and remove function', () => {
   const todo = new TODO(todoItem);
   test('Add one new item to the list', () => {
     appendTodoList(todoItem);
-    todo.addTodo();
+    const descInput = document.querySelector('#todo-input');
+    console.log(todo.addTodo((descInput.value = 'lorem')));
     const list = document.querySelectorAll('.row-elements');
     expect(list).toHaveLength(1);
   });
 
   test('remove element at index 0', () => {
     expect(todo.removeTodo(0)).toHaveLength(0);
+  });
+
+  test('test update description', () => {
+    const description = document.querySelector('.description');
+    const descriptionText = description.textContent;
+    console.log(descriptionText);
   });
 });

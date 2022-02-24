@@ -1,5 +1,6 @@
 const appendTodoList = (todoItem) => {
   document.body.innerHTML = `
+  <input type="text" id="todo-input" placeholder="Add to your list" />
   <div class = 'row-elements'>
   <div class="todo-left">
     <input type="checkbox" class="status" id = ${todoItem.index}  ${
