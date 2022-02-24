@@ -10,13 +10,13 @@ class TODO {
 
   addTodo(desc) {
     this.description = desc;
-    this.index = this.todos.length;
-    todoList.push({
+    this.index = todoList.length;
+    const task = {
       index: this.index,
       description: this.description,
       completed: this.completed,
-    });
-    this.storeTodo();
+    };
+    this.storeTodo(task);
     return todoList;
   }
 
@@ -32,13 +32,15 @@ class TODO {
 
   removeTodo(id) {
     todoList = todoList.filter((todo) => todo.index !== Number(id));
+    this.todos = [...todoList];
     this.arrangeIndex();
     this.storeTodo();
     return this.todos;
   }
 
-  storeTodo() {
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+  storeTodo(task) {
+    todoList.push(task);
+    this.todos = [...todoList];
   }
 
   updateDescription(val, id) {
@@ -50,6 +52,7 @@ class TODO {
     this.todos.forEach((todo, index) => {
       todo.index = index;
     });
+    todoList = [...this.todos];
   }
 }
 
