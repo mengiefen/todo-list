@@ -76,23 +76,23 @@ eventHandler('dragstart', '.row-elements', (e) => {
   dragIndex = Number(e.target.id);
 });
 
-eventHandler('dragover', '.row-elements', (e) => {
+eventHandler('dragover', '.description', (e) => {
   e.preventDefault();
 });
 
-eventHandler('drop', '.row-elements', (e) => {
+eventHandler('drop', '.description', (e) => {
   e.preventDefault();
-  const end = +e.target.id;
+  const end = +e.target.parentNode.parentNode.id;
   handleSwap(dragIndex, end);
   e.target.classList.remove('over');
 });
 
-eventHandler('dragenter', '.row-elements', (e) => {
-  e.target.classList.add('over');
+eventHandler('dragenter', '.description', (e) => {
+  e.target.parentNode.parentNode.parentNode.classList.add('over');
 });
 
-eventHandler('dragleave', '.row-elements', (e) => {
-  e.target.classList.remove('over');
+eventHandler('dragleave', '.description', (e) => {
+  e.target.parentNode.parentNode.parentNode.classList.remove('over');
 });
 
 eventHandler('mouseover', '.bi-three-dots-vertical', (e) => {
