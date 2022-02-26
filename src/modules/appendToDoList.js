@@ -16,11 +16,13 @@ const createTodoListRow = (todoItem) => {
   const iconTrash = document.createElement('i');
   const rowElements = document.createElement('div');
   const rowHolder = document.createElement('div');
+  const btnHolder = document.createElement('div');
 
   const nameList = [
     rowLeft,
     todoInputCheckBox,
     todoPara,
+    btnHolder,
     btnEdit,
     iconThreeDots,
     btnDelete,
@@ -33,6 +35,7 @@ const createTodoListRow = (todoItem) => {
     'todo-left',
     'status',
     'description',
+    'btn-holder',
     'btn',
     'bi',
     'btn',
@@ -70,7 +73,9 @@ const createTodoListRow = (todoItem) => {
   addChild(rowLeft, [todoInputCheckBox, todoPara]);
   addChild(btnDelete, [iconTrash]);
   addChild(btnEdit, [iconThreeDots]);
-  addChild(rowElements, [rowLeft, btnEdit, btnDelete]);
+  addChild(btnHolder, [btnDelete, btnEdit]);
+
+  addChild(rowElements, [rowLeft, btnHolder]);
   rowElements.setAttribute('id', todoItem.index);
   rowElements.draggable = true;
 

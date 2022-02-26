@@ -44,14 +44,13 @@ eventHandler('change', '.status', (ev) => {
 
 eventHandler('click', '.bi-three-dots-vertical', (event) => {
   const { parentNode } = event.target.parentNode;
-  const deleteButton = parentNode.getElementsByClassName('btn-delete')[0];
   const editButton = parentNode.querySelector('.btn-edit');
-  const desc = parentNode.querySelector('.description');
+  const grandParent = parentNode.parentNode;
+  const desc = grandParent.querySelector('.description');
   desc.contentEditable = true;
   desc.focus();
   desc.classList.add('focus');
   editButton.style.display = 'none';
-  deleteButton.style.display = 'block';
 });
 
 eventHandler('click', '.bi-trash', (e) => {
@@ -103,22 +102,16 @@ eventHandler('mouseout', '.bi-three-dots-vertical', (e) => {
   e.target.style.color = '#555';
 });
 
-eventHandler('mouseover', '.bi-trash', (e) => {
-  e.target.style.color = '#ee0000';
-});
-
 const updateAndRevertEditMode = (e) => {
   const { parentNode } = e.target.parentNode;
   const { id } = parentNode;
   let val = e.target.innerText;
-  const btnD = parentNode.querySelector('.btn-delete');
   const btnE = parentNode.querySelector('.btn-edit');
   e.target.classList.remove('focus');
   e.target.blur();
   e.target.contentEditable = false;
   val = val.substring(0, val.length - 1);
   newTodo.updateDescription(val, id);
-  btnD.style.display = 'none';
   btnE.style.display = 'block';
 };
 

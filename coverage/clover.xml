@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1645876933618" clover="3.2.0">
+  <project timestamp="1645876933618" name="All files">
+    <metrics statements="26" coveredstatements="26" conditionals="4" coveredconditionals="4" methods="10" coveredmethods="10" elements="40" coveredelements="40" complexity="0" loc="26" ncloc="26" packages="2" files="3" classes="3"/>
+    <package name="__test-with-jest__">
+      <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
+      <file name="todoList.js" path="/home/mf/Documents/Desktop/uVerse/todo-list/__test-with-jest__/todoList.js">
+        <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test-with-jest__.__mock__">
+      <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <file name="appendToDOList.js" path="/home/mf/Documents/Desktop/uVerse/todo-list/__test-with-jest__/__mock__/appendToDOList.js">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+      <file name="storage.js" path="/home/mf/Documents/Desktop/uVerse/todo-list/__test-with-jest__/__mock__/storage.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

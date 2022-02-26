@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 :root {
   --blue: #43bee5;
@@ -31,13 +31,14 @@ html {
 body {
   width: 100vw;
   background-color: #edf1f1;
-  background-image: url("img/bg.jpeg");
+  background-image: url('img/bg.jpeg');
 }
 
 .todo-lists {
   margin: 5rem auto;
   padding: 2rem;
-  box-shadow: 5px 5px 5px 5px #000;
+  -webkit-box-shadow: 5px 5px 15px 5px #000;
+  box-shadow: 5px 5px 15px 5px #000;
   width: 50%;
   background-color: var(--darkblue);
 }
@@ -85,7 +86,7 @@ body {
 }
 
 .bi {
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   color: #555;
 }
 
@@ -102,13 +103,7 @@ body {
 .bi-arrow-repeat {
   color: #559089;
   -moz-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.bi-arrow-repeat:hover,
-.bi-arrow-repeat:focus,
-.bi-arrow-repeat:active {
-  color: var(--pink);
+  transition: all 1s;
 }
 
 #todo-input {
@@ -140,20 +135,37 @@ body {
   padding: 0.5rem 1rem;
 }
 
-i {
-  background-color: var(--darkblue);
-}
-
 .todo-list-row {
   position: relative;
 }
 
+.bi-trash {
+  color: transparent;
+  font-size: 1.6rem;
+  border-radius: 50%;
+  padding: 1rem 1.1rem;
+  transition: all 0.5s;
+}
+
+.btn-delete {
+  margin-right: 0.5rem;
+}
+
 .todo-list-row:hover,
 .todo-list-row:active,
-.todo-list-row:hover i,
-.todo-list-row:active i {
+.todo-list-row:hover .btn-delete,
+.todo-list-row:active .btn-delete,
+.todo-list-row:hover .bi-trash,
+.todo-list-row:hover .bi-three-dots-vertical,
+.todo-list-row:active .bi-three-dots-vertical {
   background-color: rgb(4, 19, 39);
   color: var(--gray);
+}
+
+.description:active .bi-trash,
+.todo-list-row:hover .bi-trash:hover {
+  color: #e00;
+  background: rgba(224, 217, 217, 0.2);
 }
 
 .todo-list-row:active {
@@ -167,23 +179,23 @@ i {
 }
 
 .description {
-  padding: 1rem 0.5rem;
+  padding: 1.2rem 0.5rem;
   margin-left: 2rem;
   font-size: 1.5rem;
   color: var(--blue);
-  width: 85%;
+  width: 80%;
   overflow-wrap: break-word;
 }
 
 @media screen and (max-width: 768px) {
   .description {
-    width: 80%;
+    width: 75%;
   }
 }
 
 @media screen and (max-width: 640px) {
   .description {
-    width: 75%;
+    width: 70%;
   }
 }
 
@@ -197,18 +209,17 @@ i {
   align-self: flex-end;
 }
 
+.btn-holder {
+  display: flex;
+  position: absolute;
+  right: 0;
+}
+
 .btn {
   outline: none;
-  width: auto;
   border: none;
   cursor: pointer;
   background: var(--darkblue);
-}
-
-.btn-delete {
-  display: none;
-  position: absolute;
-  right: 0;
 }
 
 .btn-clear {
@@ -219,11 +230,6 @@ i {
   padding-top: 2rem;
   color: #555;
   background-color: var(--darkblue);
-}
-
-.btn-edit {
-  position: absolute;
-  right: 0;
 }
 
 .btn-clear:hover {
